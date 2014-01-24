@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 __Dockerfile to install Go and run the Go Playground__
 
 Installs Go and OpenSSH. Root password is randomly generated.
@@ -19,14 +18,6 @@ This will force the ports to be NATed as SSH on Docker host port 2222 and HTTP o
 
 You should then be able to connect to the HTTP port and use the Go Playground..
 
-If the HTTP port is not NATed to port 80 on the Docker host, you may need some proxying (haproxy or nginx) to configure Magento correctly due to Magento's page rewrite rules, as well as the various `url` variables in the configuration db tables. *This is outside the scope of this README!*
-
 You should also be able to connect to the instance via SSH using root and the password recorded earlier.
 
-Very loosely based on [dmahlow/docker-magento](https://github.com/dmahlow/docker-magento). I'm still using his Apache virtual host config as it works  perfectly.
-=======
-docker-goplay
-=============
-
 Dockerfile for Go runtime, Go playground and OpenSSH installation
->>>>>>> fbe0aa1c442e31c72aab9e9a832263939ea36885
