@@ -7,29 +7,29 @@ FROM ubuntu:precise
 
 MAINTAINER Mike Hughes, intermernet@gmail.com
 
-# Create a random password for root and MySQL and save to "/root/pw.txt"
+# Create a random password for root and save to "/root/pw.txt"
 RUN  < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-12} > /root/pw.txt
 
 # Change the root password
 RUN echo "root:$(cat /root/pw.txt)" | chpasswd
 
 # Update package lists
-RUN apt-get update
+RUN apt-get update -q
 
-# Install the "add-apt-repository" utility
-RUN apt-get install -y python-software-properties
+# Install OpenSSHd
+RUN apt-get install -qy openssh-server build-essential curl git
 
-# Add the Go PPA repository
-RUN add-apt-repository -y ppa:gophers/go
+# Install Go source
+RUN curl -s https://go.googlecode.com/files/go1.2.src.tar.gz | tar -v -C /usr/local -xz
 
-# Update package list
-RUN apt-get update
+# Build Go from source
+RUN cd /usr/local/go/src && ./make.bash --no-clean 2>&1
 
-# Install packages
-RUN apt-get install -y golang-stable openssh-server
+# Go binary path to PATH
+ENV PATH /usr/local/go/bin:$PATH
 
 # Build the Go Playground application
-RUN bash -c "cd /root/ && go build /usr/lib/go/misc/goplay/goplay.go"
+RUN bash -c "cd /root/ && go build /usr/local/go/misc/goplay/goplay.go"
 
 # Create the SSHd working directory
 RUN mkdir /var/run/sshd
@@ -48,4 +48,3 @@ ENTRYPOINT ["/root/run.sh"]
 
 # Expose SSH and HTTP ports
 EXPOSE 22 9090
-
