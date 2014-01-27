@@ -16,7 +16,7 @@ RUN echo "root:$(cat /root/pw.txt)" | chpasswd
 # Update package lists
 RUN apt-get update -q
 
-# Install OpenSSHd
+# Install packages
 RUN apt-get install -qy openssh-server build-essential curl git
 
 # Install Go source
