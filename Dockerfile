@@ -1,6 +1,6 @@
 # Go language runtime, Go playground application and SSHd installation
 #
-# Go Playground listens on port 9090.
+# Go playground listens on port 9090.
 
 # Use Ubuntu 12.04 as base image
 FROM ubuntu:precise

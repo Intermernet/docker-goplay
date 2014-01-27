@@ -16,6 +16,6 @@ Run the image:
 
 This will force the ports to be NATed as SSH on Docker host port 2222 and HTTP on Docker host port 9090.
 
-You should then be able to connect to the HTTP port and use the Go Playground..
+You should then be able to connect to the HTTP port and use the Go Playground.
 
 You should also be able to connect to the instance via SSH using root and the password recorded earlier.
