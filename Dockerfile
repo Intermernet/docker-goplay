@@ -20,7 +20,7 @@ RUN apt-get update -q
 RUN apt-get install -qy openssh-server build-essential curl git
 
 # Install Go source
-RUN curl -s https://go.googlecode.com/files/go1.2.src.tar.gz | tar -v -C /usr/local -xz
+RUN curl -s https://storage.googleapis.com/golang/go1.3.1.src.tar.gz | tar -v -C /usr/local -xz
 
 # Build Go from source
 RUN cd /usr/local/go/src && ./make.bash --no-clean 2>&1
