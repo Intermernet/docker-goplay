@@ -12,7 +12,7 @@ Towards the end of the output it will display the randomly generated root passwo
 
 Run the image:
 
-    docker run -d -t -i -h "host.name" -p 2222:22 -p 9090:9090 docker-goplay
+    docker run -d -t -i -h "localhost" -p 2222:22 -p 9090:9090 docker-goplay
 
 This will force the ports to be NATed as SSH on Docker host port 2222 and HTTP on Docker host port 9090.
 
